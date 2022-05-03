@@ -8,7 +8,7 @@ import {
 export const productDetailsReducer = (state ={product: {reviews: []}}, action) => {
     switch (action.type) {
         case PRODUCT_DETAILS_REQUEST:
-            return { loading: true, product: {reviews: []} };
+            return { loading: true, product:  []};
         case PRODUCT_DETAILS_SUCCESS:
             return { loading: false, product: action.payload };
         case PRODUCT_DETAILS_FAILURE:
