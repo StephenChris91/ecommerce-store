@@ -6,6 +6,7 @@ import { listProductDetails, clearProductDetails } from '../actions/productActio
 import { useDispatch, useSelector } from 'react-redux';
 import {Loader} from '../Components/Loader';
 import {Message} from '../Components/Message';
+import { addItemToCart } from '../actions/cartActions'
 
 
 
@@ -13,7 +14,7 @@ import {Message} from '../Components/Message';
 import { useParams } from 'react-router-dom'
 
 
-const ProductScreen = (   ) => {
+const ProductScreen = ( {  }  ) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [qty, setQty] = useState(1);
@@ -31,6 +32,7 @@ const ProductScreen = (   ) => {
 
     const addToCartHandler = () => {
         //TODO
+        //dispatch(addItemToCart(id, qty));
         navigate(`/cart/${id}?qty=${qty}`);
     }
 

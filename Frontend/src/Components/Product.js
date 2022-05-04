@@ -1,8 +1,15 @@
 import { Card, Button} from 'react-bootstrap'
 import Rating from './Rating'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 const Product = ( { product } ) => {
+
+    const navigate = useNavigate();
+
+    const redirectToProduct = () => {
+        navigate(`/products/${product.id}`)
+    }
   return (
         <Card className="my-3 p-3 rounded">
             <Link to={`/product/${product._id}`}>
@@ -21,7 +28,9 @@ const Product = ( { product } ) => {
             <Card.Text as="h3">
                 <strong>${product.price}</strong>
             </Card.Text>
-            <Button variant="primary" className="btn btn-primary rounded">Add to Cart</Button>
+            <Link to={`/product/${product._id}`}>
+                <Button variant="primary" className="btn btn-primary rounded">View Product</Button>
+            </Link>
         </Card>
   )
 }
