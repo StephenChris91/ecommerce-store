@@ -19,6 +19,8 @@ const Cart = ( { match, history}) => {
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
   console.log(cartItems)
+  console.log(cart)
+  console.log(qty)
 
   useEffect(() => {
     if (id) {
