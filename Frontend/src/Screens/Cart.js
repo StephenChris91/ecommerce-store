@@ -4,15 +4,27 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap';
-import { addToCart } from '../actions/cartActions';
+import { addItemToCart } from '../actions/cartActions';
 
-const Cart = ( { location }) => {
-   const navigate = useNavigate();
-   location = useLocation();
-  const id  = useParams();
+const Cart = ( { match, history}) => {
+   //const navigate = useNavigate();
 
-    const qty = new URLSearchParams(location.search).get('qty');
-    console.log(qty);
+   const { id } = useParams()
+
+  const query = new URLSearchParams(location.search).get('qty')
+  const qty = Number(query)
+
+  const dispatch = useDispatch()
+
+  const cart = useSelector((state) => state.cart)
+  const { cartItems } = cart
+  console.log(cartItems)
+
+  useEffect(() => {
+    if (id) {
+      dispatch(addItemToCart(id, qty))
+    }
+  }, [dispatch, id, qty])
 
   return (
     <div>Cart</div>
