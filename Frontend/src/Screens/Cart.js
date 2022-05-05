@@ -36,6 +36,7 @@ const Cart = ( { match, history}) => {
   return (
     <Row>
       <Col md={8} className="mt-5">
+        <Link to='/' className="mt-3">Continue Shopping</Link>
         <h1>SHOPPING CART</h1>
         {cartItems.length === 0 ? (
           <Message >
