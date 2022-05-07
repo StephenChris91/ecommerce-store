@@ -10,13 +10,13 @@ import { getProducts, getProductById } from '../controllers/ProductControllers.j
 //@access   Public
 
 
-router.route('/',).get(getProducts);
+router.route('/').get(getProducts);
 
 //@desc     Fetch single product
 //@route    GET /api/v1/products/:id
 //@access   Public
 
-router.route('/:id',).get(getProductById);
+router.route('/:id').get(getProductById);
 
 
 export default router;
