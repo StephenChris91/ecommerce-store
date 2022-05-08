@@ -5,7 +5,7 @@ export default function FormContainer({ children }) {
     
 
     return (
-        <Container className="mt-2">
+        <Container className="mt-2 mx-auto">
             <Row className="justify-content-md-venter">
                 <Col md={6} xs={12}>
                     { children}
