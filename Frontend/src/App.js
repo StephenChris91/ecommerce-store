@@ -12,6 +12,7 @@ import Cart from './Screens/Cart';
 import ProductScreen from './Screens/ProductScreen';
 import LoginScreen from './Screens/LoginScreen';
 import Profile from './Screens/Profile';
+import RegisterScreen from './Screens/RegisterScreen';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               </Route>
               <Route path="/product/:id" element={<ProductScreen />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/register" element={<RegisterScreen />} />
             </Routes>
           </Container>
           <Footer />

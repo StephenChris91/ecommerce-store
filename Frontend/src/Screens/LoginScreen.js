@@ -39,8 +39,8 @@ export default function LoginScreen( ) {
         <h1>Sign In</h1>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
-        <Form onSubmit={submitHandler}>
-            <Form.Group controlId="email">
+        <Form onSubmit={submitHandler} className="my-2">
+            <Form.Group controlId="email" className="my-4">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" 
                 placeholder="Enter your email address"
@@ -51,7 +51,7 @@ export default function LoginScreen( ) {
             </Form.Group>
 
 
-            <Form.Group controlId="password">
+            <Form.Group controlId="password" className="my-4">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" 
                 placeholder="Enter your password"
@@ -67,7 +67,7 @@ export default function LoginScreen( ) {
         <Row className=".mt-#">
             <Col>
                 New Customer?{" "}
-                <Link to={ redirect ? `/register/redirect=${redirect}` : '/register'}>Register</Link>
+                <Link to={ redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
             </Col>
         </Row>  
     </FormContainer>
