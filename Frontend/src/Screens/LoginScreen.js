@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Message} from '../Components/Message'
 import {Loader} from '../Components/Loader'
 import { Login } from '../actions/userActions'
+import { ToastContainer, toast } from 'react-toastify'
 import FormContainer from '../Components/FormContainer'
 
-export default function LoginScreen( ) {
+export default function LoginScreen({ location }) {
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
 
@@ -17,9 +18,16 @@ export default function LoginScreen( ) {
     const userLogin = useSelector(state => state.userLogin);
     const { loading, error, userInfo } = userLogin;
 
-    const { search } = useLocation();
-    const redirectUrl = new URLSearchParams(search).get('redirectUrl')
-    const redirect = redirectUrl ? redirectUrl : '/'
+    // const { search } = useLocation();
+    // const redirectUrl = new URLSearchParams(search).get('redirectUrl')
+    // const redirect = redirectUrl ? redirectUrl : '/'
+    const redirect = location.search ? location.search.split('=')[1] : '/'
+
+    const loginNotification = () => toast("Login Successful", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        type: toast.TYPE.SUCCESS
+    });
 
     useEffect(() => {
         if (userInfo) {
@@ -33,12 +41,14 @@ export default function LoginScreen( ) {
 
         //this is where to submit form data to backend
         dispatch(Login(email, password))
+        loginNotification()
     }
 
     return <FormContainer className="my-5">
         <h1>Sign In</h1>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
+        <ToastContainer />
         <Form onSubmit={submitHandler} className="my-2">
             <Form.Group controlId="email" className="my-4">
                 <Form.Label>Email</Form.Label>
