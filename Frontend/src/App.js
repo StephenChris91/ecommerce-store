@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <main>
+      <main className="py-5">
           <Container>
             <Routes>
               <Route path="/" element={<HomeScreen />} />

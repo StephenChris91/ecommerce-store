@@ -18,16 +18,23 @@ export default function LoginScreen({ location }) {
     const userLogin = useSelector(state => state.userLogin);
     const { loading, error, userInfo } = userLogin;
 
-    // const { search } = useLocation();
-    // const redirectUrl = new URLSearchParams(search).get('redirectUrl')
-    // const redirect = redirectUrl ? redirectUrl : '/'
-    const redirect = location.search ? location.search.split('=')[1] : '/'
+     const { search } = useLocation();
+    const redirectUrl = new URLSearchParams(search).get('redirectUrl')
+    const redirect = redirectUrl ? redirectUrl : '/'
+    //const redirect = location.search ? location.search.split('=')[1] : '/'
 
-    const loginNotification = () => toast("Login Successful", {
+    const loginSuccessNotification = () => toast("Login Successful", {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 2000,
         type: toast.TYPE.SUCCESS
     });
+
+    const loginFailureNotification = () => toast("Login Failed", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        type: toast.TYPE.ERROR
+    }
+    );
 
     useEffect(() => {
         if (userInfo) {
@@ -41,7 +48,11 @@ export default function LoginScreen({ location }) {
 
         //this is where to submit form data to backend
         dispatch(Login(email, password))
-        loginNotification()
+        if (error) {
+            loginFailureNotification()
+        }else {
+            loginSuccessNotification()
+        }
     }
 
     return <FormContainer className="my-5">

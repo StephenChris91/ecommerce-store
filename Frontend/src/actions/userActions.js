@@ -11,7 +11,8 @@ import { USER_LOGIN_FAILURE,
     USER_DETAILS_SUCCESS,
     USER_UPDATE_PROFILE_REQUEST,
     USER_UPDATE_PROFILE_SUCCESS,
-    USER_UPDATE_PROFILE_FAILURE} from '../constants/userConstants';
+    USER_UPDATE_PROFILE_FAILURE,
+    USER_DETAILS_RESET} from '../constants/userConstants';
 
 
 
@@ -48,11 +49,20 @@ export const Login = (email, password) => async (dispatch) => {
     
 }
 
-export const logout = () => async (dispatch) =>  {
-    localStorage.removeItem('userInfo');
-    dispatch({ type: USER_LOGOUT });
-}
+// export const logout = () => async (dispatch) =>  {
+//     localStorage.removeItem('userInfo');
+//     dispatch({ type: USER_LOGOUT });
+// }
 
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('cartItems')
+    localStorage.removeItem('shippingAddress')
+    localStorage.removeItem('paymentMethod')
+    dispatch({ type: USER_LOGOUT })
+    dispatch({ type: USER_DETAILS_RESET })
+    document.location.href = '/login'
+  }
 
 export const Register = (name, email, password) => async (dispatch) => {
     try {
