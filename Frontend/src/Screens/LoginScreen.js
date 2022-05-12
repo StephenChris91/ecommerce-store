@@ -19,7 +19,8 @@ export default function LoginScreen({ location }) {
     const { loading, error, userInfo } = userLogin;
 
      const { search } = useLocation();
-    const redirectUrl = new URLSearchParams(search).get('redirectUrl')
+    const redirectUrl = new URLSearchParams(search).get('redirect')
+    console.log(redirectUrl)
     const redirect = redirectUrl ? redirectUrl : '/'
     //const redirect = location.search ? location.search.split('=')[1] : '/'
 

@@ -30,7 +30,7 @@ const Cart = ( { match, history}) => {
   }
 
   const checkOutHandler = () => {
-    navigate('/login/?redirect=/shipping')
+    navigate('/login?redirect=/shipping')
   }
 
   return (
