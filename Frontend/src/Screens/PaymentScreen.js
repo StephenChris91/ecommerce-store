@@ -23,7 +23,7 @@ export default function paymentScreen() {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(savePaymentMethod(paymentMethod(paymentMethod)))
+        dispatch(savePaymentMethod(paymentMethod))
         navigate('/placeorder')
 
     }
@@ -47,14 +47,14 @@ export default function paymentScreen() {
                 checked />
             </Col>
             <Col>
-            <Form.Check 
+            {/* <Form.Check 
                 type="radio" 
                 label="Stripe" 
                 name="paymentMethod" 
                 value="Stripe" 
                 id="Stripe" 
                 onChange={(e) => setPaymentMethod(e.target.value)} 
-                 />
+                 /> */}
             </Col>
             </Form.Group>
             <Button variant="primary my-5" type="submit">
