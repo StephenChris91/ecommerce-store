@@ -6,7 +6,7 @@ import Loader from '../Components/Loader';
 import { Row, Col, ListGroup, Image, Form, Button, Card} from 'react-bootstrap';
 import { addItemToCart, removeFromCart } from '../actions/cartActions';
 
-const Cart = ( { match, history}) => {
+const Cart = () => {
    const navigate = useNavigate();
 
    const { id } = useParams()
@@ -18,6 +18,7 @@ const Cart = ( { match, history}) => {
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
+  console.log(cartItems)
   useEffect(() => {
     if (id) {
       dispatch(addItemToCart(id, qty))
