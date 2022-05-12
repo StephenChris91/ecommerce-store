@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../Components/FormContainer'
 import { useNavigate } from 'react-router-dom'
 import {saveShippingAddress } from '../actions/cartActions'
+import CheckoutSteps from '../Components/checkoutSteps'
 
 
 export default function ShippingScreen() {
@@ -28,6 +29,7 @@ export default function ShippingScreen() {
     
 
     return <FormContainer>
+        <CheckoutSteps step1={false} step2={true} step3={false} step4={false}/>
         <h1>Shipping</h1>
         <Form onSubmit={submitHandler}>
             <Form.Group controlId="address">
