@@ -13,6 +13,10 @@ export default function PlaceOrderScreen() {
         console.log('Order Received')
     }
 
+    const addDecimals = (num) => {
+        return Number(num).toFixed(2)
+    }
+
     return (
         <>
             <div>
@@ -37,8 +41,8 @@ export default function PlaceOrderScreen() {
                                 {cart.paymentMethod}
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <h4>Order Summary</h4>
-                                {cart.cartItems.length === 0 ? <Message>Your Cart is empty</Message> : (
+                                <h4>Products</h4>
+                                {cart.cartItems.length === 0 ? <Message>Your Cart is empty <Link to='/'>Go Back</Link></Message> : (
                                     <ListGroup.Item>
                                         {cart.cartItems.map((item, index)=> (
                                             <ListGroup.Item key={index}>
@@ -74,7 +78,7 @@ export default function PlaceOrderScreen() {
                                             <strong>Subtotal</strong>
                                         </Col>
                                         <Col>
-                                            ${cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)}
+                                            ${addDecimals(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))}
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -84,7 +88,7 @@ export default function PlaceOrderScreen() {
                                             Shipping Price:
                                         </Col>
                                         <Col>
-                                            ${cart.shippingPrice}
+                                            ${ cart.cartItems.length < 1 ? addDecimals(cart.shippingPrice = 0) : addDecimals(cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 100)}
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -94,7 +98,7 @@ export default function PlaceOrderScreen() {
                                             Tax Price:
                                         </Col>
                                         <Col>
-                                            ${cart.TaxPrice}
+                                            ${addDecimals(Number((cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0) * 0.15)))}
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -104,7 +108,7 @@ export default function PlaceOrderScreen() {
                                             Total:
                                         </Col>
                                         <Col>
-                                            ${cart.totalPrice}
+                                            ${addDecimals(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0) + cart.shippingPrice + Number((cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0) * 0.15)))}
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
