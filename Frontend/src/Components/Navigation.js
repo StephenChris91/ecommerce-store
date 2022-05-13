@@ -8,6 +8,8 @@ import { logout } from '../actions/userActions'
 const Navigation = () => {
     const dispatch = useDispatch();
     const userLogin = useSelector(state => state.userLogin);
+    const cart = useSelector(state => state.cart);
+    const { cartItems } = cart;
     const { userInfo } = userLogin;
     const navigate = useNavigate();
 
@@ -26,6 +28,7 @@ const Navigation = () => {
                     <Nav className="ms-auto">
                         <Nav.Link as={NavLink} to="/cart">
                             <i className="fas fa-shopping-cart">Cart</i>
+                            <span className="badge badge-pill badge-danger">{`(${cartItems.length})`}</span>
                         </Nav.Link>
                         {userInfo ? (
                             <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
