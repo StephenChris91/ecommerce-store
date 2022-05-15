@@ -6,6 +6,7 @@ import { CART_ADD_ITEM } from '../constants/cartConstants';
 import { addItemToCart } from '../actions/cartActions';
 import { useState, useEffect } from 'react';
 import { clearProductDetails } from '../actions/productActions';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Product = ( { product } ) => {
@@ -29,6 +30,18 @@ const Product = ( { product } ) => {
     const dispatch = useDispatch();
     //const { product, loading, error } = useSelector(state => state.productList);
 
+    const productAddedNotification = () => {
+        toast.success("Product added to cart successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
     useEffect(() => {
         // dispatch(addItemToCart(id));
 
@@ -40,11 +53,14 @@ const Product = ( { product } ) => {
     const addToCartHandler = () => {
         //TODO
         dispatch(addItemToCart(product._id, qty));
+        productAddedNotification();
        // navigate(`/cart/${id}?qty=${qty}`);
     }
 
   return (
+      <>
         <Card className="my-3 p-3 rounded">
+
             <Link to={`/product/${product._id}`}>
                 <Card.Img variant="top" src={product.image} />
             </Link>
@@ -66,6 +82,8 @@ const Product = ( { product } ) => {
             </Link>
             <i className="fas fa-shopping-cart" onClick={addToCartHandler}></i>
         </Card>
+        <ToastContainer />
+        </>
   )
 }
 

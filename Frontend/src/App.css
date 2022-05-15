@@ -1,16 +1,49 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.cart-row{ 
+  width: 400px; 
+  padding: 10px;
+  
+}
+
+.cart-row img {
+  width: 50px;
+  height: 50px;
+}
+
+#cart-drop-down, .empty-cart-message{
+  position: absolute;
+  top: 100px;
+  right: 10px;
+  width: 400px;
+  height: auto;
+  background-color: rgb(255, 254, 254);
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1;
+  
+}
+
+.cart-dropdown-btn{
+  width: 50px;
+  height: 50px;
+}
+
+.dropdown-btn{
+  margin: 0 20px;
+  width: 90%;
+}
+
+.cart-toggler{
+  margin-top: 15px;
+}
+
+.cart-toggler span{
+  cursor: pointer;
 }
 
 .App-header {
@@ -24,6 +57,20 @@
 .App-link {
   color: #61dafb;
 }
+
+.orderCount{
+  width: 20px;
+  height: 20px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  top: -10px;
+  right: 10px;
+}
+
 
 @keyframes App-logo-spin {
   from {

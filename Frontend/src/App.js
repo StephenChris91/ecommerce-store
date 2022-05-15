@@ -34,7 +34,7 @@ function App() {
               <Route path="/register" element={<RegisterScreen />} />
               <Route path="/shipping" element={<ShippingScreen />} />
               <Route path="/payment" element={<PaymentScreen />} />
-              <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route path="/orders" element={<PlaceOrderScreen />} />
             </Routes>
           </Container>
           <Footer />
