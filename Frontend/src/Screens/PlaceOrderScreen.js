@@ -6,12 +6,14 @@ import {Message} from '../Components/Message';
 import CheckoutSteps from '../Components/checkoutSteps';
 import { createOrder } from '../actions/orderActions';
 import { ToastContainer, toast } from 'react-toastify';
+import { resetCart } from '../actions/cartActions';
 
 export default function PlaceOrderScreen ({  }) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
   
     const cart = useSelector((state) => state.cart)
+
   
     if (!cart.shippingAddress.address) {
         navigate('/shipping')
@@ -39,7 +41,8 @@ export default function PlaceOrderScreen ({  }) {
   
     useEffect(() => {
       if (success) {
-        navigate(`/order/${order._id}`)
+        dispatch(resetCart(cart.cartItems))
+        navigate(`/orders/${order._id}`)
       }
       // eslint-disable-next-line
     }, [navigate, success])
