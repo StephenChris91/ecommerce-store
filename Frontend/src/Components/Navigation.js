@@ -59,7 +59,7 @@ const Navigation = () => {
               )}
 
               {userInfo && userInfo.isAdmin && (
-                <NavDropdown title="Admin" id="adminmenu">
+                <NavDropdown title="Manage" id="adminmenu">
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>

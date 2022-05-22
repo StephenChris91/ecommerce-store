@@ -17,8 +17,8 @@ export default function UserListScreen() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const deleteUser = useSelector((state) => state.deleteUser);
-  const { success: deleteSuccess } = deleteUser;
+  const userDelete = useSelector((state) => state.deleteUser);
+  const { success: deleteSuccess } = userDelete;
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
