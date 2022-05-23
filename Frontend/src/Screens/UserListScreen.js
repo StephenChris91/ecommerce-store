@@ -29,7 +29,9 @@ export default function UserListScreen() {
   }, [dispatch, navigate, deleteSuccess]);
 
   const deleteHandler = (id) => {
-    dispatch(deleteUser(id));
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteUser(id));
+    }
   };
 
   return (
