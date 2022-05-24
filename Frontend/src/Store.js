@@ -3,6 +3,11 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { productListReducer } from "./reducers/productListReducer";
 import { productDetailsReducer } from "./reducers/productDetailsReducer";
+
+import {
+  deleteProductReducer,
+  createProductReducer,
+} from "./reducers/productListReducer";
 import { cartReducer } from "./reducers/cartReducer";
 import {
   userLoginReducer,
@@ -10,6 +15,7 @@ import {
   userDetailsReducer,
   userUpdateProfileReducer,
   userListReducer,
+  userUpdateReducer,
   deleteUserReducer,
 } from "./reducers/userReducer";
 import {
@@ -34,6 +40,8 @@ const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  deleteProduct: deleteProductReducer,
+  createProduct: createProductReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -46,6 +54,7 @@ const reducer = combineReducers({
   orderListMy: orderListMyReducer,
   userList: userListReducer,
   deleteUser: deleteUserReducer,
+  userUpdate: userUpdateReducer,
 });
 
 const initialState = {
